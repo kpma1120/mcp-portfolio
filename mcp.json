@@ -1,0 +1,12 @@
+{
+    "research_server": {
+        "command": "python",
+        "args": ["server.py"],
+        "transport": "stdio"
+    },
+    "firecrawl_server": {
+        "command": "npx",
+        "args": ["-y", "firecrawl-mcp"],
+        "transport": "stdio"
+    }
+}

@@ -1,0 +1,6 @@
+langchain
+fastmcp
+chromadb
+langchain-chroma
+langchain-ollama
+langchain-mcp-adapters
