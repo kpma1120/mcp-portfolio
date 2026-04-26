@@ -350,7 +350,7 @@ tool_node → chat_node
   • 'Scrape https://example.com and save key insights'
 
 ==================================================
-Type 'quit' or 'exit' to end the session
+Type 'quit', 'exit', or 'bye' to end the session
 ```
 
 ---
@@ -409,7 +409,7 @@ Would you like me to perform any specific analysis (e.g., comparative analysis w
 ```
 
 <div align="center">
-  <img src="screenshots/langsmith-1.png" alt="LangSmith Tracing 1" width="200">
+  <img src="screenshots/langsmith-1.png" alt="LangSmith Tracing 1" width="800">
   <p><em>LangSmith Tracing 1</em></p>
 </div>
 
@@ -431,7 +431,7 @@ Would you like to perform any additional analysis or save further research findi
 ```
 
 <div align="center">
-  <img src="screenshots/langsmith-2.png" alt="LangSmith Tracing 2" width="200">
+  <img src="screenshots/langsmith-2.png" alt="LangSmith Tracing 2" width="800">
   <p><em>LangSmith Tracing 2</em></p>
 </div>
 
@@ -511,7 +511,7 @@ Would you like to refine this analysis further or compare it with other stocks i
 ```
 
 <div align="center">
-  <img src="screenshots/langsmith-3.png" alt="LangSmith Tracing 3" width="200">
+  <img src="screenshots/langsmith-3.png" alt="LangSmith Tracing 3" width="800">
   <p><em>LangSmith Tracing 3</em></p>
 </div>
 
@@ -536,7 +536,7 @@ Would you like to explore details about any of these topics or perform additiona
 ```
 
 <div align="center">
-  <img src="screenshots/langsmith-4.png" alt="LangSmith Tracing 4" width="200">
+  <img src="screenshots/langsmith-4.png" alt="LangSmith Tracing 4" width="800">
   <p><em>LangSmith Tracing 4</em></p>
 </div>
 
@@ -631,7 +631,7 @@ Microsoft appears most promising based on the stored data, combining strong anal
 ```
 
 <div align="center">
-  <img src="screenshots/langsmith-5.png" alt="LangSmith Tracing 5" width="200">
+  <img src="screenshots/langsmith-5.png" alt="LangSmith Tracing 5" width="800">
   <p><em>LangSmith Tracing 5</em></p>
 </div>
 
@@ -685,7 +685,7 @@ Would you like to retrieve specific documents from this topic or compare it with
 ```
 
 <div align="center">
-  <img src="screenshots/langsmith-6.png" alt="LangSmith Tracing 6" width="200">
+  <img src="screenshots/langsmith-6.png" alt="LangSmith Tracing 6" width="800">
   <p><em>LangSmith Tracing 6</em></p>
 </div>
 
@@ -708,7 +708,7 @@ Would you like to verify the remaining topics or perform another action?
 ```
 
 <div align="center">
-  <img src="screenshots/langsmith-7.png" alt="LangSmith Tracing 7" width="200">
+  <img src="screenshots/langsmith-7.png" alt="LangSmith Tracing 7" width="800">
   <p><em>LangSmith Tracing 7</em></p>
 </div>
 
@@ -737,7 +737,7 @@ Let me know if you'd like to explore any of these topics further!
 ```
 
 <div align="center">
-  <img src="screenshots/langsmith-8.png" alt="LangSmith Tracing 8" width="200">
+  <img src="screenshots/langsmith-8.png" alt="LangSmith Tracing 8" width="800">
   <p><em>LangSmith Tracing 8</em></p>
 </div>
 
