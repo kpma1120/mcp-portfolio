@@ -30,8 +30,8 @@
 - [📊 LangSmith Observability](#-langsmith-observability)
 - [⚙️ Setup Instructions](#️-setup-instructions)
 - [🚀 How to Run](#-how-to-run)
-- [🧪 Example Workflow](#-example-workflow)
 - [🔮 Future Work](#-future-work)
+- [📑 Appendix — Example Workflow](#-appendix--example-workflow)
 
 </details>
 
@@ -104,7 +104,7 @@ research_chroma_dbs/             # Prebuilt Chroma DBs for RAG retrieval
 └── Microsoft-Stock-Analysis/    # Microsoft stock research data
 .env.example                     # Example environment variables template
 .gitignore                       # Git ignore rules
-README.md                        # Project documentation
+README.md                        # Project documentation (with Appendix workflow trace)
 client.py                        # MCP client implementation
 mcp.json                         # MCP configuration file
 requirements.txt                 # Project dependencies
@@ -313,10 +313,24 @@ tool_node → chat_node
 
 ---
 
-## 🧪 Example Workflow
+## 🔮 Future Work
 
-<details>
-  <summary><strong>Click to expand example workflow</strong></summary>
+- **Multi‑agent workflows** — introduce specialized agents (e.g. crawler, curator, summarizer) coordinated through LangGraph subgraphs  
+- **Agent planning & decomposition** — add planning nodes that break complex research tasks into structured tool‑calling steps  
+- **Reranking & evaluation** — insert ranking/evaluation nodes to score retrieved chunks and improve answer quality  
+- **Advanced retrieval pipelines** — experiment with hybrid search, metadata filters, and topic‑aware retrieval strategies  
+
+---
+
+## 📑 Appendix — Example Workflow
+
+This appendix provides a detailed step‑by‑step trace of the Research Assistant agent in action.  
+It records both the **expected behavior** and the **observed behavior** at each stage, highlighting where the agent performed exactly as intended and where it showed unexpected but effective adjustments.  
+Readers can use this section to understand the agent’s reliability, error‑handling, and overall workflow execution in practice.
+
+### Step 0 — Initiate the chat session
+**Expected Behavior:** The agent should introduce the available tools and provide usage guidance.  
+**Observed Behavior:** Agent does as expected.
 
 ```bash
 🔬 Research Assistant with Firecrawl & RAG
@@ -354,6 +368,10 @@ Type 'quit', 'exit', or 'bye' to end the session
 ```
 
 ---
+
+### Step 1 — Conduct research on Alibaba’s stock
+**Expected Behavior:** The agent should crawl Alibaba’s stock performance information from the web.  
+**Observed Behavior:** The agent first attempted to search the vector store, found nothing, then correctly scraped data from the internet and produced a structured analysis.
 
 ```bash
 🤔 You: Conduct a research analysis on Alibaba’s stock performance.
@@ -415,6 +433,11 @@ Would you like me to perform any specific analysis (e.g., comparative analysis w
 
 ---
 
+### Step 2 — Save Alibaba’s stock research data
+**Expected Behavior:** The agent should create a new folder with a valid name under `research_chroma_dbs` and store the data in the vector database.  
+**Observed Behavior:** The agent initially attempted to save data under an invalid folder name (`Alibaba stock performance`), reported an error, then retried with a valid folder name (`Alibaba_Stock_Performance`) and succeeded.
+
+
 ```bash
 🤔 You: Save the research output to the vector store.
 ```
@@ -436,6 +459,10 @@ Would you like to perform any additional analysis or save further research findi
 </div>
 
 ---
+
+### Step 3 — Summarize Alibaba’s stored research data
+**Expected Behavior:** The agent should retrieve relevant Alibaba stock performance data from the vector database and generate a summary.  
+**Observed Behavior:** Agent does as expected.
 
 ```bash
 🤔 You: What insights were found about Alibaba’s recent stock performance in the stored research data?
@@ -517,6 +544,10 @@ Would you like to refine this analysis further or compare it with other stocks i
 
 ---
 
+### Step 4 — List all saved research topics
+**Expected Behavior:** The agent should extract and list all research topics stored in the vector database.  
+**Observed Behavior:** Agent does as expected.
+
 ```bash
 🤔 You: What research topics have already been saved?
 ```
@@ -541,6 +572,10 @@ Would you like to explore details about any of these topics or perform additiona
 </div>
 
 ---
+
+### Step 5 — Compare all saved stocks
+**Expected Behavior:** The agent should retrieve each stock’s saved research data one by one, then compare their performance and recommend the strongest stock.  
+**Observed Behavior:** Agent does as expected.
 
 ```bash
 🤔 You: Start by retrieving the saved research for Alibaba, Amazon, Google, and Microsoft from the vector store. After all four retrievals are complete, compare the findings and recommend the strongest stock based solely on the retrieved data. Avoid using any outside knowledge.
@@ -637,6 +672,10 @@ Microsoft appears most promising based on the stored data, combining strong anal
 
 ---
 
+### Step 6 — Show detailed topic info for Microsoft
+**Expected Behavior:** The agent should retrieve and display detailed information for the topic `Microsoft-Stock-Analysis`.  
+**Observed Behavior:** Agent does as expected.
+
 ```bash
 🤔 You: Show me the stored topic information for Microsoft.
 ```
@@ -691,6 +730,10 @@ Would you like to retrieve specific documents from this topic or compare it with
 
 ---
 
+### Step 7 — Delete the incorrect Alibaba topic
+**Expected Behavior:** The agent should remove the folder `Alibaba stock performance` while keeping all other topics untouched.  
+**Observed Behavior:** Agent does as expected.
+
 ```bash
 🤔 You: Delete the research topic named exactly “Alibaba stock performance”. Do not delete any other topic, including “Alibaba_Stock_Performance”. Only remove the topic whose name matches exactly.
 ```
@@ -713,6 +756,10 @@ Would you like to verify the remaining topics or perform another action?
 </div>
 
 ---
+
+### Step 8 — Verify remaining topics
+**Expected Behavior:** The agent should list all remaining research topics to confirm that only the four valid stock topics are present.  
+**Observed Behavior:** Agent does as expected.
 
 ```bash
 🤔 You: List all current research topics again so I can confirm that only the four valid stock topics remain.
@@ -743,6 +790,10 @@ Let me know if you'd like to explore any of these topics further!
 
 ---
 
+### Step 9 — Close the chat session
+**Expected Behavior:** The agent should send a goodbye message and terminate the session.  
+**Observed Behavior:** Agent does as expected.
+
 ```bash
 🤔 You: bye
 ```
@@ -750,13 +801,7 @@ Let me know if you'd like to explore any of these topics further!
 ```bash
 👋 Goodbye! Happy researching!
 ```
-</details>
 
 ---
 
-## 🔮 Future Work
-
-- **Multi‑agent workflows** — introduce specialized agents (e.g. crawler, curator, summarizer) coordinated through LangGraph subgraphs  
-- **Agent planning & decomposition** — add planning nodes that break complex research tasks into structured tool‑calling steps  
-- **Reranking & evaluation** — insert ranking/evaluation nodes to score retrieved chunks and improve answer quality  
-- **Advanced retrieval pipelines** — experiment with hybrid search, metadata filters, and topic‑aware retrieval strategies  
+✅ **Summary:** Out of 9 steps, 7 were executed exactly as expected, while 2 involved minor deviations (Step 1 and Step 2). Both deviations were handled correctly, demonstrating the agent’s ability to recover gracefully and maintain reliable workflow execution. This confirms the robustness of the orchestration and the stability of the overall pipeline.
